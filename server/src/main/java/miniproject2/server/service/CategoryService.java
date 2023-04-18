@@ -1,0 +1,18 @@
+package miniproject2.server.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.http.ResponseEntity;
+
+import miniproject2.server.model.Category;
+
+public interface CategoryService {
+
+    ResponseEntity<String> addNewCategory(Map<String, String> requeMap);
+
+    ResponseEntity<List<Category>> getAllCategory(String filterValue);
+
+    ResponseEntity<String> updateCategory(Map<String, String> requeMap);
+    
+}

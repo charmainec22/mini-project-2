@@ -1,0 +1,98 @@
+<mat-card>
+    <b><span>Find Recipes</span></b>
+</mat-card>
+<hr>
+
+<mat-card>
+      <form [formGroup]="recipeForm" (ngSubmit)="submitForm()">
+        <mat-form-field appearance="fill">
+            <mat-label>Search By Name</mat-label>
+            <input matInput formControlName = "name" />
+          </mat-form-field>
+          <button 
+          type="submit" 
+          mat-raised-button color="primary" 
+          [disabled]="recipeForm.invalid">Search</button>
+      </form>
+  </mat-card>
+
+  <mat-card>
+    <form [formGroup]="recipeFormCuisine" (ngSubmit)="submitFormCuisine()">
+      <mat-form-field appearance="fill">
+          <mat-label>Search By Cuisine</mat-label>
+          <mat-select formControlName = "cuisine">
+            <mat-option value = "African">African</mat-option>
+            <mat-option value = "American">American</mat-option>
+            <mat-option value = "British">British</mat-option>
+            <mat-option value = "Cajun">Cajun</mat-option>
+            <mat-option value = "Eastern European">Eastern European</mat-option>
+            <mat-option value = "European">European</mat-option>
+            <mat-option value = "French">French</mat-option>
+            <mat-option value = "German">German</mat-option>
+            <mat-option value = "Greek">Greek</mat-option>
+            <mat-option value = "Indian">Indian</mat-option>
+            <mat-option value = "Irish">Irish</mat-option>
+            <mat-option value = "Italian">Italian</mat-option>
+            <mat-option value = "Japanese">Japanese</mat-option>
+            <mat-option value = "Jewish">Jewish</mat-option>
+            <mat-option value = "Korean">Korean</mat-option>
+            <mat-option value = "Latin American">Latin American</mat-option>
+            <mat-option value = "Mediterranean">Mediterranean</mat-option>
+            <mat-option value = "Mexican">Mexican</mat-option>
+            <mat-option value = "Middle Eastern">Middle Eastern</mat-option>
+            <mat-option value = "Nordic">Nordic</mat-option>
+            <mat-option value = "Southern">Southern</mat-option>
+            <mat-option value = "Spanish">Spanish</mat-option>
+            <mat-option value = "Thai">Thai</mat-option>
+            <mat-option value = "Vietnamese">Vietnamese</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button 
+        type="submit" 
+        mat-raised-button color="primary" 
+        [disabled]="recipeFormCuisine.invalid">Search</button>
+    </form>
+</mat-card>
+
+  <hr>
+
+  <!-- <div class="responsive_table">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef>Category</th>
+            <td mat-cell *matCellDef="let element">{{element.category}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let element">{{element.price}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>Total</th>
+            <td mat-cell *matCellDef="let element">{{element.total}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>Delete</th>
+            <td mat-cell *matCellDef="let element; let i =index" class="action-link">
+                <button mat-flat-button color="primary" matTooltip="Delete" (click)="handleDeleteAction(i,element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div> -->
