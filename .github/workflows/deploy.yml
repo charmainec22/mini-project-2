@@ -40,8 +40,6 @@ jobs:
           node-version: 16
       - name: Install Railwayy
         run: npm i -g @railway/cli@2.1.0
-      - name: Login Railway
-        run: railway login --browserless
       - name: Railway Up
         run: railway up
         env:
