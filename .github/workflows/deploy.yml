@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Install Railway
+      - name: Install Railwayy
         run: npm i -g @railway/cli@2.1.0
       - name: Railway Up
         run: railway up
