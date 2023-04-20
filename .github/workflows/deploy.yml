@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 16
       - name: Install Railway
-        run: npm i -g @railway/cli@2.1.0
+        run: npm i -g @railway/cli@8.11.0
       - name: Railway Upp
         run: railway up
         env:
