@@ -40,7 +40,7 @@ jobs:
           node-version: 16
       - name: Install Railway
         run: npm i -g @railway/cli@2.1.0
-      - name: Railway Up
+      - name: Railway Upp
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
