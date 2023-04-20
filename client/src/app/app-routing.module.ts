@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { FullComponent } from './layouts/full/full.component';
 import { RouteGuardService } from './services/route-guard.service';
 import { RecipeResultComponent } from './material-component/recipe-result/recipe-result.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

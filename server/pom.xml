@@ -123,6 +123,12 @@
 			<version>2.0.0</version>
 		</dependency>
 
+		<dependency>
+                <groupId>org.apache.maven.shared</groupId>
+                <artifactId>maven-filtering</artifactId>
+                <version>1.3</version>
+            </dependency>
+
 	</dependencies>
 
 	<build>
@@ -139,6 +145,19 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <httpsPort>8443</httpsPort>
+                    <keystoreFile>C:\Users\charm\OneDrive\Documents\.NUS-PAF\mini-project-2\springboot.jks</keystoreFile>
+                    <keystorePass>password</keystorePass>
+                </configuration>
+            </plugin>
+
 		</plugins>
 	</build>
 

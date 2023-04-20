@@ -75,17 +75,33 @@ public class SecurityConfig{
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().configurationSource(request-> new CorsConfiguration().applyPermitDefaultValues())
+        http
+        .cors().configurationSource(request-> new CorsConfiguration().applyPermitDefaultValues())
             .and()
             .csrf().disable()
+            // .requiresChannel(channel -> channel.anyRequest().requiresSecure())
             .authorizeHttpRequests()
-            .requestMatchers("/user/login", "/user/signup", "/user/forgotPassword").permitAll()
+            .requestMatchers("/user/login", "/user/signup", "/user/forgotPassword", "/", "/3rdpartylicenses.txt", 
+            "/4.269445994bd0b5522605.js", "/5.23893f55f5ab6fa01314.js", "/favicon.ico", "/food1.ad9d67dfb73a9b6f2010.jpg", "/index.html", "/main.41c396f097e3cdd21688.js", 
+            "/materialdesignicons-webfont.5cbc1ce0f8ee2c20e27b.woff2", "/materialdesignicons-webfont.49d3b4ee7b1dee3671b0.eot", "/materialdesignicons-webfont.d6f0edc61c6ca22474a7.html", 
+            "/materialdesignicons-webfont.da5fb9dba31bb391d27e.woff", "/materialdesignicons-webfont.fa3815d439cf3406399e.ttf", "/polyfills.94daefd414b8355106ab.js", "/runtime.16bedb33ed6b64678290.js", "/styles.0fff239001061c6da782.css"
+            , "/assests/**").permitAll()
             .anyRequest().authenticated()
+            // .and().requiresChannel().requestMatchers("/user/login").requiresSecure()
             .and().exceptionHandling().and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+            // if (protocol != null && protocol.equalsIgnoreCase("http")) {
+            //     http.requiresChannel().anyRequest().requiresInsecure();
+            // } else {
+            //     http.requiresChannel().anyRequest().requiresSecure();
+            // }
+            //http.requiresChannel().anyRequest().requiresSecure();
+            
+
             http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
+            
         return http.build();
     }
 
