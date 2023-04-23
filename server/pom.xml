@@ -146,17 +146,6 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-jar-plugin</artifactId>
-			<configuration>
-			<archive>
-				<manifest>
-				<mainClass>miniproject2.App</mainClass>
-				</manifest>
-			</archive>
-			</configuration>
-			</plugin>
 
 			<plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
