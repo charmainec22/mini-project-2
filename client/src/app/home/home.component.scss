@@ -4,9 +4,11 @@
 
 /* Style the body */
 body {
-  font-family: Arial;
+  font-family: "Raleway", Arial, sans-serif;
   margin: 0;
 }
+
+
 
 /* Header/logo Title */
 .header {
@@ -14,17 +16,21 @@ body {
   text-align: center;
   background: #1abc9c;
   color: white;
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+h1 {
+  font-family: "Lucida Handwriting";
 }
 
 /* Style the top navigation bar */
 .navbar {
-  display: flex;
-  background-color: #333;
+  font-family: "Lucida Handwriting";
 }
 
 /* Style the navigation bar links */
 .navbar a {
-  color: white;
+  color: black;
   padding: 14px 20px;
   text-decoration: none;
   text-align: center;
@@ -69,7 +75,7 @@ body {
   padding: 6px;
   text-align: center;
   color: white;
-  background: #7b1fa2;
+  background: #5D8AA8;
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
@@ -111,7 +117,7 @@ body {
   display: flex;
   align-items: center;
   justify-content:center;
-  background-color: #7b1fa2;
+  background-color: black;
 }
 
 nav {
@@ -136,7 +142,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #ffffff;
+  color: black;
   position: relative;
   font-size: 1.25em;
   cursor: pointer;
@@ -230,4 +236,20 @@ a {
   width: 55%;
   padding: 20px;
   text-align: center;
+}
+
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../assets/img/1.jpg");
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
 }

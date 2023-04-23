@@ -16,7 +16,7 @@ import { saveAs } from 'file-saver';
 })
 export class ViewBillComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'email', 'contactNumber', 'paymentMethod', 'total', 'view'];
+  displayedColumns: string[] = ['billId', 'name', 'email', 'contactNumber', 'paymentMethod', 'total', 'view'];
   dataSource: any;
   responseMessage:any;
 

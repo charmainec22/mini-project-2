@@ -19,6 +19,9 @@ public interface UserRest {
     @PostMapping(path = "/signup")
     public ResponseEntity<String> signUp(@RequestBody(required = true) Map <String,String> requeMap);
 
+    @PostMapping(path = "/signupAdmin")
+    public ResponseEntity<String> signupAdmin(@RequestBody(required = true) Map <String,String> requeMap);
+
     @PostMapping(path = "/login")
     public ResponseEntity<String> login (@RequestBody(required = true) Map <String,String> requeMap);
 
@@ -36,5 +39,7 @@ public interface UserRest {
 
     @PostMapping(path = "/forgotPassword")
     public ResponseEntity<String> forgotPassword (@RequestBody Map <String,String> requeMap);
+
+   
 
 }

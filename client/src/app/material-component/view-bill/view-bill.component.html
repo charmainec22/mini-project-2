@@ -11,6 +11,12 @@
 <hr>
 <div class="responsive_table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="billId">
+            <th mat-header-cell *matHeaderCellDef>Bill ID</th>
+            <td mat-cell *matCellDef="let element">{{element.uuid}}</td>
+        </ng-container>
+
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element">{{element.name}}</td>

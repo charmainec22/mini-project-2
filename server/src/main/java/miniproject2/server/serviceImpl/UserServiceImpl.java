@@ -54,6 +54,32 @@ public class UserServiceImpl implements UserService{
     EmailUtils emailUtils;
 
     @Override
+    public ResponseEntity<String> signupAdmin(Map<String, String> requestMap) {
+        log.info("Inside signupAdmin {}", requestMap);
+        try{
+
+                if(validateSignUpMap(requestMap)) {
+                    User user = userDao.findByEmailId(requestMap.get("email"));
+                    if (Objects.isNull(user)) {
+                        userDao.save(getUserFromMapAdmin(requestMap));
+                        return CafeUtils.getResponseEntity("Successfully Registered.", HttpStatus.OK);
+
+                    } else {
+                        return CafeUtils.getResponseEntity("Email already exists", HttpStatus.BAD_REQUEST);
+                    }
+                }
+                else {
+                    return CafeUtils.getResponseEntity(CafeConstants.INVALID_DATA, HttpStatus.BAD_REQUEST);
+                }
+            }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
     public ResponseEntity<String> signUp(Map<String, String> requestMap) {
         log.info("Inside signup {}", requestMap);
         try{
@@ -62,7 +88,7 @@ public class UserServiceImpl implements UserService{
                     User user = userDao.findByEmailId(requestMap.get("email"));
                     if (Objects.isNull(user)) {
                         userDao.save(getUserFromMap(requestMap));
-                        return CafeUtils.getResponseEntity("Successfully Registered", HttpStatus.OK);
+                        return CafeUtils.getResponseEntity("Successfully Registered.", HttpStatus.OK);
 
                     } else {
                         return CafeUtils.getResponseEntity("Email already exists", HttpStatus.BAD_REQUEST);
@@ -96,10 +122,22 @@ public class UserServiceImpl implements UserService{
         user.setContactNumber(requestMap.get("contactNumber"));
         user.setEmail(requestMap.get("email"));
         user.setPassword(requestMap.get("password"));
-        user.setStatus("false");
+        user.setStatus("true");
         user.setRole("user");
         return user;
     }
+
+    private User getUserFromMapAdmin(Map<String, String> requestMap) {
+        User user = new User();
+        user.setName(requestMap.get("name"));
+        user.setContactNumber(requestMap.get("contactNumber"));
+        user.setEmail(requestMap.get("email"));
+        user.setPassword(requestMap.get("password"));
+        user.setStatus("true");
+        user.setRole("admin");
+        return user;
+    }
+
 
     @Override
     public ResponseEntity<String> login(Map<String, String> requestMap) {
@@ -242,6 +280,10 @@ public class UserServiceImpl implements UserService{
 
        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+   
+
+   
 
     
 }

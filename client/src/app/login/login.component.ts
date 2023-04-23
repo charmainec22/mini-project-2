@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialogConfig, MatDialog} from '@angular/material/dialog';
 import { SnackbarService } from '../services/snackbar.service';
 import { UserService } from '../services/user.service';
 import { GlobalConstants } from '../shared/global-constants';
 import { Router } from '@angular/router';
+import { SignupComponent } from '../signup/signup.component';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     public dialogRef: MatDialogRef<LoginComponent>,
-    private snackbarService: SnackbarService) { }
+    private snackbarService: SnackbarService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -39,7 +42,9 @@ export class LoginComponent implements OnInit {
     this.userService.login(data).subscribe((response:any) => {
       this.dialogRef.close();
       localStorage.setItem('token', response.token);
-      this.router.navigate(['/cafe/dashboard']);
+      
+
+      this.router.navigate(['/cafe/reservation']);
     }, (error) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
@@ -50,6 +55,13 @@ export class LoginComponent implements OnInit {
       this.snackbarService.openSnackBar(this.responseMessage, GlobalConstants.error);
     }
     )
+  }
+
+  handleSignupAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    this.dialogRef.close();
+    this.dialog.open(SignupComponent,dialogConfig);
   }
 
 }

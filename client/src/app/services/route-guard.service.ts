@@ -44,7 +44,7 @@ export class RouteGuardService {
       if (this.auth.isAuthenticated() && tokenPayload.role == expectedRole){
         return true;
       }
-      this.snackbarService.openSnackBar(GlobalConstants.unauthorized, GlobalConstants.error);
+      //this.snackbarService.openSnackBar(GlobalConstants.unauthorized, GlobalConstants.error);
       this.router.navigate(['cafe/dashboard']);
       return false;
     }

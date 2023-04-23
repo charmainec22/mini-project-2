@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row fxLayout="row">
-        <span>Login</span>
+        <span class = "header">Login</span>
         <span class="spacer"></span>
         <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
             <mat-icon>close</mat-icon>
@@ -39,8 +39,11 @@
 
 
 <mat-dialog-actions>
-    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(loginForm.valid && loginForm.dirty)">
+    <button mat-raised-button class="button" type="submit" (click)="handleSignupAction()">
+        <mat-icon>assignment_turned_in</mat-icon> Sign Up
+    </button>
+    <button mat-raised-button class="button" type="submit" (click)="handleSubmit()" [disabled]="!(loginForm.valid && loginForm.dirty)">
         <mat-icon>send</mat-icon> Login
     </button>
-    <button mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon>Close</button>
+    <!-- <button mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon>Close</button> -->
 </mat-dialog-actions>

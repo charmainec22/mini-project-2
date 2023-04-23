@@ -36,6 +36,7 @@ import miniproject2.server.JWT.JwtFilter;
 import miniproject2.server.constants.CafeConstants;
 import miniproject2.server.dao.BillDao;
 import miniproject2.server.model.Bill;
+import miniproject2.server.model.User;
 import miniproject2.server.service.BillService;
 import miniproject2.server.utils.CafeUtils;
 
@@ -61,6 +62,8 @@ public class BillServiceImpl implements BillService{
                 } else {
                     fileName = CafeUtils.getUUID();
                     requestMap.put("uuid", fileName);
+                    // requestMap.put("points", calculatePoints());
+                    // log.info("calculated points is: ", calculatePoints());
                     insertBill(requestMap);
                 }
 
@@ -165,7 +168,7 @@ public class BillServiceImpl implements BillService{
     private void insertBill(Map<String, Object> requestMap) {
         
         try {
-
+            
             Bill bill = new Bill();
             bill.setUuid((String) requestMap.get("uuid"));
             bill.setName((String) requestMap.get("name"));
@@ -174,6 +177,7 @@ public class BillServiceImpl implements BillService{
             bill.setPaymentMethod((String) requestMap.get("paymentMethod"));
             bill.setTotal(Integer.parseInt((String) requestMap.get("totalAmount")));
             bill.setProductDetails((String) requestMap.get("productDetails"));
+            bill.setPoints(Integer.parseInt((String) requestMap.get("totalAmount"))); //1 point is equal to $1. so can just take total amount as points
             bill.setCreatedBy(jwtFilter.getCurrentUser());
             billDao.save(bill);
         } catch (Exception e) {
@@ -181,6 +185,13 @@ public class BillServiceImpl implements BillService{
         }
 
     }
+
+    // private Integer calculatePoints() {
+    //     Bill bill = new Bill();
+    //     Integer billAmt = bill.getTotal();
+    //     Integer billPoints = billAmt;
+    //     return billPoints;
+    // }
 
     private boolean validateRequestMap(Map<String, Object> requestMap) {
         return requestMap.containsKey("name") && 

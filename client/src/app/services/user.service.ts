@@ -17,6 +17,12 @@ export class UserService {
     })
   }
 
+  signupAdmin(data:any) {
+    return this.httpClient.post(this.url + "/user/signupAdmin", data, {
+      headers:new HttpHeaders().set('Content-Type', 'application/json')
+    })
+  }
+
   forgotPassword(data:any) {
     return this.httpClient.post(this.url + "/user/forgotPassword", data, {
       headers:new HttpHeaders().set('Content-Type', 'application/json')
@@ -48,4 +54,8 @@ export class UserService {
       headers:new HttpHeaders().set('Content-Type', 'application/json')
     })
   }
+
+  // getUserRole() {
+  //   return this.httpClient.get(this.url + "/user/getUserRole");
+  // }
 }

@@ -3,6 +3,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { UserService } from 'src/app/services/user.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddadminComponent } from 'src/app/addadmin/addadmin.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user',
@@ -16,7 +19,9 @@ export class ManageUserComponent implements OnInit {
   responseMessage:any;
 
   constructor(private userService: UserService,
-    private snackBarService: SnackbarService) { }
+    private snackBarService: SnackbarService,
+    private dialog: MatDialog,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.tableData()
@@ -61,5 +66,12 @@ export class ManageUserComponent implements OnInit {
       }
       this.snackBarService.openSnackBar(this.responseMessage, GlobalConstants.error);
     })
+  }
+
+  handleAddAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    this.dialog.open(AddadminComponent,dialogConfig);
+    
   }
 }

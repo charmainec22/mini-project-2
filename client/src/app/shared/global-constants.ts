@@ -3,7 +3,7 @@ export class GlobalConstants {
     //msg
     public static genericError: string = "Something went wrong, Please try again later"; 
 
-    public static unauthorized: string = "You are not an authorized user to access this page."; 
+    //public static unauthorized: string = "You are not an authorized user to access this page."; 
 
     public static productExistError: string = "Product already exists"; 
 
