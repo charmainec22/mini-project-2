@@ -22,8 +22,6 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeResultComponent } from './recipe-result/recipe-result.component';
 import { RecipeResultCuisineComponent } from './recipe-result-cuisine/recipe-result-cuisine.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { ManageReservationComponent } from './manage-reservation/manage-reservation.component';
 import { MenuComponent } from './menu/menu.component';
 
 
@@ -53,8 +51,6 @@ import { MenuComponent } from './menu/menu.component';
     RecipeComponent,
     RecipeResultComponent,
     RecipeResultCuisineComponent,
-    ReservationComponent,
-    ManageReservationComponent,
     MenuComponent,
   ]
 })

@@ -7,8 +7,6 @@ import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ViewBillComponent } from './view-bill/view-bill.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { RecipeComponent } from './recipe/recipe.component';
-import { ReservationComponent } from './reservation/reservation.component';
-import { ManageReservationComponent } from './manage-reservation/manage-reservation.component';
 import { RecipeResultComponent } from './recipe-result/recipe-result.component';
 import { RecipeResultCuisineComponent } from './recipe-result-cuisine/recipe-result-cuisine.component';
 import { MenuComponent } from './menu/menu.component';
@@ -74,22 +72,6 @@ export const MaterialRoutes: Routes = [
       {
         path: 'recipe-result-cuisine',
         component: RecipeResultCuisineComponent,
-        canActivate: [RouteGuardService],
-        data: {
-          expectedRole: ['admin']
-        }
-      },
-      {
-        path: 'reservation',
-        component: ReservationComponent,
-        canActivate: [RouteGuardService],
-        data: {
-          expectedRole: ['user']
-        }
-      },
-      {
-        path: 'manage-reservation',
-        component: ManageReservationComponent,
         canActivate: [RouteGuardService],
         data: {
           expectedRole: ['admin']

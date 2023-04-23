@@ -10,7 +10,6 @@ export interface Menu {
 
 const MENUITEMS = [
     {state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'dashboard', role:'admin'},
-    {state: 'reservation', name: 'Make A Reservation', type: 'link', icon: 'book', role:'user'},
     {state: 'menu', name: 'Menu', type: 'link', icon: 'book', role:''},
     {state: 'category', name: 'Manage category', type: 'link', icon: 'category', role:'admin'},
     {state: 'product', name: 'Manage product', type: 'link', icon: 'inventory_2', role:'admin'},
