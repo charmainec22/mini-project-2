@@ -177,7 +177,6 @@ public class BillServiceImpl implements BillService{
             bill.setPaymentMethod((String) requestMap.get("paymentMethod"));
             bill.setTotal(Integer.parseInt((String) requestMap.get("totalAmount")));
             bill.setProductDetails((String) requestMap.get("productDetails"));
-            bill.setPoints(Integer.parseInt((String) requestMap.get("totalAmount"))); //1 point is equal to $1. so can just take total amount as points
             bill.setCreatedBy(jwtFilter.getCurrentUser());
             billDao.save(bill);
         } catch (Exception e) {

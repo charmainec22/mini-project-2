@@ -82,7 +82,7 @@ public class SecurityConfig{
             // .requiresChannel(channel -> channel.anyRequest().requiresSecure())
             .authorizeHttpRequests()
             .requestMatchers("/user/login", "/user/signup", "/user/forgotPassword", "/", "/3rdpartylicenses.txt", "/manifest.json",
-             "/4.4717e5eb4a95ae1082e7.js", "/5.eae7db7e18e0633dcdfe.js", "/favicon.ico", "/food1.ad9d67dfb73a9b6f2010.jpg", "/index.html", "/main.eb9a3ddef515b6596f8d.js", 
+             "/4.4717e5eb4a95ae1082e7.js", "/5.eae7db7e18e0633dcdfe.js", "/favicon.ico", "/food1.ad9d67dfb73a9b6f2010.jpg", "/index.html", "/main.a393017f731b9e49d7c9.js", 
             "/materialdesignicons-webfont.5cbc1ce0f8ee2c20e27b.woff2", "/materialdesignicons-webfont.49d3b4ee7b1dee3671b0.eot", "/materialdesignicons-webfont.d6f0edc61c6ca22474a7.html", 
             "/materialdesignicons-webfont.da5fb9dba31bb391d27e.woff", "/materialdesignicons-webfont.fa3815d439cf3406399e.ttf", "/polyfills.94daefd414b8355106ab.js", "/runtime.0b53df65c9d48fcbd279.js", "/styles.0fff239001061c6da782.css"
             , "/assests/**", "/images/**").permitAll()

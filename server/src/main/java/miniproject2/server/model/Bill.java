@@ -56,6 +56,4 @@ public class Bill implements Serializable{
     @Column(name = "createdby")
     private String createdBy;
 
-    @Column(name="points")
-    private Integer points;
 }
