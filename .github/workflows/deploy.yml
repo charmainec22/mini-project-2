@@ -44,3 +44,5 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+# deployment works and able to push to railway but shows failure in github
