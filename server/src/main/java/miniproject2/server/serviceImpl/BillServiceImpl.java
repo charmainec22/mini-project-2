@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +37,9 @@ import lombok.extern.slf4j.Slf4j;
 import miniproject2.server.JWT.JwtFilter;
 import miniproject2.server.constants.CafeConstants;
 import miniproject2.server.dao.BillDao;
+import miniproject2.server.dao.TableStatusDao;
 import miniproject2.server.model.Bill;
+import miniproject2.server.model.TableStatus;
 import miniproject2.server.model.User;
 import miniproject2.server.service.BillService;
 import miniproject2.server.utils.CafeUtils;
@@ -49,6 +53,9 @@ public class BillServiceImpl implements BillService{
 
     @Autowired
     BillDao billDao;
+
+    @Autowired
+    TableStatusDao tableStatusDao;
 
     @Override
     public ResponseEntity<String> generateReport(Map<String, Object> requestMap) {
@@ -78,11 +85,11 @@ public class BillServiceImpl implements BillService{
                 setRectangleInPdf(doc);
                 log.info("!!!!!!!!! REPORT DATA IS !!!!!!!!!!!" + data);
 
-                Paragraph chunk = new Paragraph("Cafe Management System", getFont("Header"));
+                Paragraph chunk = new Paragraph("Coffee For Two", getFont("Header"));
                 chunk.setAlignment(Element.ALIGN_CENTER);
                 doc.add(chunk);
 
-                Paragraph paragraph = new Paragraph(data + "/n /n", getFont("Data"));
+                Paragraph paragraph = new Paragraph(data + "\n \n", getFont("Data"));
                 doc.add(paragraph);
 
                 PdfPTable table = new PdfPTable(5);
@@ -95,8 +102,8 @@ public class BillServiceImpl implements BillService{
                 }
                 doc.add(table);
 
-                Paragraph footer = new Paragraph("Total: " + requestMap.get("totalAmount") + 
-                                    "Thank you for visiting. Please visit again!!", getFont("Data"));
+                Paragraph footer = new Paragraph("Total: " +  "$" +requestMap.get("totalAmount") + 
+                                    " Thank you for visiting. Please visit again!!", getFont("Data"));
                 doc.add(footer);
                 doc.close();
                 return new ResponseEntity<>("{\"uuid\":\"" + fileName + "\"}", HttpStatus.OK);
@@ -166,7 +173,10 @@ public class BillServiceImpl implements BillService{
     }
 
     private void insertBill(Map<String, Object> requestMap) {
-        
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
+        String formatDate = localDate.format(formatters);
+        log.info("DATE IS: "+ formatDate);
         try {
             
             Bill bill = new Bill();
@@ -178,6 +188,7 @@ public class BillServiceImpl implements BillService{
             bill.setTotal(Integer.parseInt((String) requestMap.get("totalAmount")));
             bill.setProductDetails((String) requestMap.get("productDetails"));
             bill.setCreatedBy(jwtFilter.getCurrentUser());
+            bill.setDate(formatDate);
             billDao.save(bill);
         } catch (Exception e) {
             e.printStackTrace();
@@ -261,6 +272,92 @@ public class BillServiceImpl implements BillService{
         }
 
         return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+	@Override
+	public ResponseEntity<String> addTable(Map<String, String> requeMap) {
+		try {
+           
+                    tableStatusDao.save(getTableFromMap(requeMap));
+                    return CafeUtils.getResponseEntity("Table added successfully", HttpStatus.OK);
+               
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+    private TableStatus getTableFromMap(Map<String, String> requeMap) {
+        //Bill bill = new Bill();
+        TableStatus table = new TableStatus();
+        table.setTableId(requeMap.get("tableId"));
+        table.setPax(Integer.parseInt((String) requeMap.get("pax")));
+        table.setStatus("true");
+        return table;
+    }
+
+    @Override
+    public ResponseEntity<List<TableStatus>> getAllTable() {
+        try {
+            log.info("INSIDE GET");
+            return new ResponseEntity<>(tableStatusDao.getAllTable(), HttpStatus.OK);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> updateTable(Map<String, String> requeMap) {
+        try {
+           
+
+                
+
+                   Optional<TableStatus> optional = tableStatusDao.findById(Integer.parseInt(requeMap.get("id")));
+                   if (!optional.isEmpty()) {
+                    tableStatusDao.updateTableStatus(requeMap.get("status"),Integer.parseInt(requeMap.get("id")));
+                    return CafeUtils.getResponseEntity("Table status updated successfully", HttpStatus.OK);
+
+                   } else {
+
+                        return CafeUtils.getResponseEntity("Table ID does not exist", HttpStatus.OK);
+
+                   }
+                
+             
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @Override
+    public ResponseEntity<String> deleteTable(Integer id) {
+        try {
+           
+
+            Optional optional = tableStatusDao.findById(id);
+            if (!optional.isEmpty()) {
+                tableStatusDao.deleteById(id);
+                 return CafeUtils.getResponseEntity("Table deleted successfully", HttpStatus.OK);
+            } 
+            return CafeUtils.getResponseEntity("Table ID does not exist", HttpStatus.OK);     
+           
+         
+      
+         
+ } catch (Exception e) {
+     e.printStackTrace();
+ }
+
+ return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
     }
     
 }

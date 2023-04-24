@@ -1,6 +1,8 @@
 package miniproject2.server.model;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -55,5 +57,14 @@ public class Bill implements Serializable{
 
     @Column(name = "createdby")
     private String createdBy;
+
+    @Column(name="date")
+    private String date;
+
+    // @Column(name="table")
+    // private String table;
+
+    // @Column(name="tablestatus")
+    // private Boolean tableStatus;
 
 }

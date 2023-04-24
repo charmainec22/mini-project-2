@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import miniproject2.server.model.Bill;
+import miniproject2.server.model.TableStatus;
 
 
 
@@ -29,4 +30,16 @@ public interface BillRest {
 
     @PostMapping(path = "/delete/{id}")
     ResponseEntity<String> deleteBill(@PathVariable Integer id);
+
+    @PostMapping(path = "/add")
+    ResponseEntity<String> addTable(@RequestBody Map<String,String> requeMap);
+
+    @GetMapping(path = "/get")
+    ResponseEntity<List<TableStatus>> getAllTable();
+
+    @PostMapping(path = "/update")
+    ResponseEntity<String> updateTable(@RequestBody Map<String,String> requeMap);
+
+    @PostMapping(path = "/deleteTable/{id}")
+    ResponseEntity<String> deleteTable(@PathVariable Integer id);
 }

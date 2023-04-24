@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 
 import miniproject2.server.model.Bill;
+import miniproject2.server.model.TableStatus;
 
 public interface BillService{
 
@@ -16,5 +17,13 @@ public interface BillService{
     ResponseEntity<byte[]> getPdf(Map<String, Object> requestMap);
 
     ResponseEntity<String> deleteBill(Integer id);
+
+    ResponseEntity<String> addTable(Map<String, String> requeMap);
+
+    ResponseEntity<List<TableStatus>> getAllTable();
+
+    ResponseEntity<String> updateTable(Map<String, String> requeMap);
+
+    ResponseEntity<String> deleteTable(Integer id);
     
 }
