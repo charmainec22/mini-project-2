@@ -34,14 +34,16 @@
         </div>
     </form>
 
+    <a (click)="handleForgotPasswordAction()">Forget Password?</a>
+
 </mat-dialog-content>
 
 
 
 <mat-dialog-actions>
-    <button mat-raised-button class="button" type="submit" (click)="handleSignupAction()">
+    <!-- <button mat-raised-button class="button" type="submit" (click)="handleSignupAction()">
         <mat-icon>assignment_turned_in</mat-icon> Sign Up
-    </button>
+    </button> -->
     <button mat-raised-button class="button" type="submit" (click)="handleSubmit()" [disabled]="!(loginForm.valid && loginForm.dirty)">
         <mat-icon>send</mat-icon> Login
     </button>

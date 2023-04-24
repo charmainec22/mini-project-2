@@ -7,6 +7,7 @@ import { GlobalConstants } from '../shared/global-constants';
 import { Router } from '@angular/router';
 import { SignupComponent } from '../signup/signup.component';
 import jwtDecode from 'jwt-decode';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-login',
@@ -44,7 +45,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', response.token);
       
 
-      this.router.navigate(['/cafe/menu']);
+      this.router.navigate(['/cafe/table']);
     }, (error) => {
       if (error.error?.message) {
         this.responseMessage = error.error?.message;
@@ -62,6 +63,13 @@ export class LoginComponent implements OnInit {
     dialogConfig.width = "550px";
     this.dialogRef.close();
     this.dialog.open(SignupComponent,dialogConfig);
+  }
+
+  handleForgotPasswordAction() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "550px";
+    this.dialogRef.close();
+    this.dialog.open(ForgotPasswordComponent,dialogConfig);
   }
 
 }

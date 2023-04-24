@@ -1,5 +1,5 @@
 <mat-card>
-    <b><span>View Bill</span></b>
+    <b><span class= "header">View Bill</span></b>
 </mat-card>
 <hr>
 <mat-card>
@@ -11,6 +11,11 @@
 <hr>
 <div class="responsive_table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">{{element.date}}</td>
+        </ng-container>
 
         <ng-container matColumnDef="billId">
             <th mat-header-cell *matHeaderCellDef>Bill ID</th>

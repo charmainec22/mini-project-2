@@ -19,11 +19,15 @@ body {
   font-family: "Raleway", Arial, sans-serif;
 }
 
-h1 {
+p {
   font-family: "Lucida Handwriting";
+  
 }
 
-
+h1 {
+  font-family: "Lucida Handwriting";
+  color: black;
+}
 
 
 body, html {
@@ -34,4 +38,11 @@ body, html {
 
 .menu {
   display: none;
+}
+
+.bgimg {
+  background-image: url('../../assets/img/coffeeshop.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
 }

@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class= "header">Add Table</span>
+        <span class="spacer"></span>
+        <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="tableForm">
+        <div fxFlex fxLayout="column">
+            <div fxLayout = "row wrap">
+            <mat-form-field appearance="standard" fxFlex>
+                <mat-label>Table ID: </mat-label>
+                <input matInput formControlName="tableId" required>
+                <mat-error *ngIf="tableForm.controls.tableId.touched && tableForm.controls.tableId.invalid">
+                    <span *ngIf="tableForm.controls.tableId.errors.required">This field is mandatory.</span>
+                    <span *ngIf="tableForm.controls.tableId.errors.pattern">This field is invalid.</span>
+                </mat-error>
+            </mat-form-field>
+            </div>
+
+            <div fxLayout = "row wrap">
+                <mat-form-field appearance="standard" fxFlex>
+                    <mat-label>Pax</mat-label>
+                    <input matInput formControlName="pax" required>
+                    <mat-error *ngIf="tableForm.controls.pax.touched && tableForm.controls.pax.invalid">
+                        <span *ngIf="tableForm.controls.pax.errors.required">This field is mandatory.</span>
+                        <span *ngIf="tableForm.controls.pax.errors.pattern">This field is invalid.</span>
+                    </mat-error>
+                </mat-form-field>
+        </div>
+        </div>
+    </form>
+</mat-dialog-content>    
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(tableForm.valid && tableForm.dirty)">
+        <mat-icon>save</mat-icon> {{action}}
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close><mat-icon>cancel</mat-icon>Close</button>
+</mat-dialog-actions>

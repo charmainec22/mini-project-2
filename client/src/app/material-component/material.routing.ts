@@ -10,6 +10,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeResultComponent } from './recipe-result/recipe-result.component';
 import { RecipeResultCuisineComponent } from './recipe-result-cuisine/recipe-result-cuisine.component';
 import { MenuComponent } from './menu/menu.component';
+import { TableStatusComponent } from './table-status/table-status.component';
 
 
 export const MaterialRoutes: Routes = [
@@ -83,6 +84,14 @@ export const MaterialRoutes: Routes = [
         canActivate: [RouteGuardService],
         data: {
           expectedRole: ['admin','user']
+        }
+      },
+      {
+        path: 'table',
+        component: TableStatusComponent,
+        canActivate: [RouteGuardService],
+        data: {
+          expectedRole: ['admin']
         }
       }
 

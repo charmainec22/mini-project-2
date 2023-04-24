@@ -23,6 +23,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeResultComponent } from './recipe-result/recipe-result.component';
 import { RecipeResultCuisineComponent } from './recipe-result-cuisine/recipe-result-cuisine.component';
 import { MenuComponent } from './menu/menu.component';
+import { TableStatusComponent } from './table-status/table-status.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { MenuComponent } from './menu/menu.component';
     RecipeResultComponent,
     RecipeResultCuisineComponent,
     MenuComponent,
+    TableStatusComponent,
   ]
 })
 export class MaterialComponentsModule {}

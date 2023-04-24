@@ -15,7 +15,7 @@ import { ConfirmationComponent } from '../dialog/confirmation/confirmation.compo
 })
 export class MenuComponent implements OnInit {
 
-  displayedColumn : string[] = ['name','description', 'price'];
+  displayedColumn : string[] = ['name','description', 'category', 'price'];
   dataSource:any;
   responseMessage:any;
 

@@ -3,6 +3,8 @@
     margin-bottom: 0;
     width: auto;
     margin-bottom: 10PX;
+    background: white;
+    color: black;
   }
   
     mat-form-field{
@@ -39,4 +41,8 @@
         text-align: left;
         background-color: #04AA6D;
         color: white;
+      }
+
+      .header {
+        font-family: "Lucida Handwriting";
       }

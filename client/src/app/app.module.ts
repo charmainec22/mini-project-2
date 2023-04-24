@@ -18,6 +18,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
 import { AddadminComponent } from './addadmin/addadmin.component';
+import { TableComponent } from './table/table.component';
 
 
 // const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -41,7 +42,8 @@ import { AddadminComponent } from './addadmin/addadmin.component';
     SignupComponent,
     ForgotPasswordComponent,
     LoginComponent,
-    AddadminComponent
+    AddadminComponent,
+    TableComponent
    ],
   imports: [
     BrowserModule,
